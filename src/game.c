@@ -27,7 +27,6 @@
 #include "rects.h"
 #include "scroller.h"
 #include "control.h"
-#include "data.h"
 
 #ifdef ENABLE_DEVTOOLS
 #include "devtools.h"
@@ -41,7 +40,7 @@ typedef enum {
 #ifdef ENABLE_DEVTOOLS
   DEVTOOLS,
 #endif
-  XRICK,
+  //XRICK,
   INIT_GAME, INIT_BUFFER,
   INTRO_MAIN, INTRO_MAP,
   PAUSE_PRESSED1, PAUSE_PRESSED1B, PAUSED, PAUSE_PRESSED2,
@@ -153,7 +152,7 @@ game_toggleCheat(U8 nbr)
 #ifdef ENABLE_DEVTOOLS
       game_state != DEVTOOLS &&
 #endif
-      game_state != XRICK && game_state != EXIT) {
+      /*game_state != XRICK &&*/ game_state != EXIT) {
     switch (nbr) {
     case 1:
       game_cheat1 = ~game_cheat1;
@@ -203,9 +202,61 @@ game_stopmusic(void)
 }
 #endif
 
+U32 tm, tmx;
+ void game_init()
+ {
+    loaddata(); /* load cached data */
+    game_period = sysarg_args_period ? sysarg_args_period : GAME_PERIOD;
+    tm = sys_gettime();
+    game_state = INIT_GAME;
+     sysvid_clear();
+     sysvid_setGamePalette();
+ }
+
+ int game_update()
+ {
+     if (game_state == EXIT)
+         return 0;
+
+    /* timer */
+    tmx = tm; tm = sys_gettime(); tmx = tm - tmx;
+    if (tmx < game_period) sys_sleep(game_period - tmx);
+
+    /* sound */
+    /*snd_mix();*/
+
+    /* events */
+    if (game_waitevt)
+        sysevt_wait();  /* wait for an event */
+    else
+        sysevt_poll();  /* process events (non-blocking) */
+
+    /* frame */
+    frame();
+
+    return 1;
+ }
+
+ void game_draw()
+ {
+     /* video */
+    /*DEBUG*//*game_rects=&draw_SCREENRECT;*//*DEBUG*/
+    sysvid_update(game_rects);
+    draw_STATUSRECT.next = NULL;  /* FIXME freerects should handle this */
+
+    //frame_draw();
+ }
+
+void game_shutdown()
+{
+    freedata(); /* free cached data */
+}
+
+
 /*
  * Main loop
  */
+#if 0
 void
 game_run(void)
 {
@@ -244,6 +295,7 @@ game_run(void)
 
 	freedata(); /* free cached data */
 }
+#endif
 
 /*
  * Prepare frame
@@ -270,7 +322,7 @@ frame(void)
 				game_state = INIT_GAME;
 				break;
 			case SCREEN_EXIT:
-				game_state = EXIT;
+				gam_state = EXIT;
 				return;
 			}
 		break;
@@ -278,7 +330,7 @@ frame(void)
 
 
 
-		case XRICK:
+		/*case XRICK:
 			switch(screen_xrick()) {
 			case SCREEN_RUNNING:
 				return;
@@ -293,7 +345,7 @@ frame(void)
 				game_state = EXIT;
 				return;
 			}
-		break;
+		break;*/
 
 
 

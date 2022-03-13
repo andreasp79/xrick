@@ -20,7 +20,6 @@
 #include "config.h"
 
 #include "rects.h"
-#include "data.h"
 
 #define LEFT 1
 #define RIGHT 0
@@ -57,7 +56,12 @@ extern U8 game_period;     /* time between each frame, in millisecond */
 
 extern rect_t *game_rects; /* rectangles to redraw at each frame */
 
-extern void game_run(void);
+extern void game_init();
+extern int game_update();
+extern void game_draw();
+extern void game_shutdown();
+
+//extern void game_run(void);
 extern void game_setmusic(char *name, U8 loop);
 extern void game_stopmusic(void);
 

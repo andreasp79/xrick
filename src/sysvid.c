@@ -214,9 +214,10 @@ sysvid_init(void)
    * Window Manager. On fvwm2 it is shifted to the right ...
    */
   /*SDL_WM_SetIcon(s, mask);*/
-	SDL_SetColorKey(s,
+	
+    /*SDL_SetColorKey(s,
                     SDL_SRCCOLORKEY,
-                    SDL_MapRGB(s->format,IMG_ICON->colors[tpix].r,IMG_ICON->colors[tpix].g,IMG_ICON->colors[tpix].b));
+                    SDL_MapRGB(s->format,IMG_ICON->colors[tpix].r,IMG_ICON->colors[tpix].g,IMG_ICON->colors[tpix].b));*/
 
   SDL_WM_SetIcon(s, NULL);
 
@@ -273,6 +274,8 @@ sysvid_update(rect_t *rects)
   if (SDL_LockSurface(screen) == -1)
     sys_panic("xrick/panic: SDL_LockSurface failed\n");
 
+    zoom = 1;
+    
   while (rects) {
     p0 = sysvid_fb;
     p0 += rects->x + rects->y * SYSVID_WIDTH;
@@ -295,7 +298,7 @@ sysvid_update(rect_t *rects)
       p0 += SYSVID_WIDTH;
     }
 
-    IFDEBUG_VIDEO2(
+    /*IFDEBUG_VIDEO2(
     for (y = rects->y; y < rects->y + rects->height; y++)
       for (yz = 0; yz < zoom; yz++) {
 	p = (U8 *)screen->pixels + rects->x * zoom + (y * zoom + yz) * SYSVID_WIDTH * zoom;
@@ -309,7 +312,7 @@ sysvid_update(rect_t *rects)
 	*p = 0x01;
 	*(p + ((rects->height * zoom - 1) * zoom) * SYSVID_WIDTH) = 0x01;
       }
-    );
+    );*/
 
     area.x = rects->x * zoom;
     area.y = rects->y * zoom;

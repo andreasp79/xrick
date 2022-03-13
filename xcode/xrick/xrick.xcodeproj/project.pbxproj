@@ -19,7 +19,6 @@
 		2D6CB3EB18E28AA100DFCDA2 /* dat_spritesST.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D6CB3B918E28AA000DFCDA2 /* dat_spritesST.c */; };
 		2D6CB3EC18E28AA100DFCDA2 /* dat_tilesPC.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D6CB3BA18E28AA000DFCDA2 /* dat_tilesPC.c */; };
 		2D6CB3ED18E28AA100DFCDA2 /* dat_tilesST.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D6CB3BB18E28AA000DFCDA2 /* dat_tilesST.c */; };
-		2D6CB3EE18E28AA100DFCDA2 /* data.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D6CB3BC18E28AA000DFCDA2 /* data.c */; };
 		2D6CB3EF18E28AA100DFCDA2 /* devtools.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D6CB3BD18E28AA000DFCDA2 /* devtools.c */; };
 		2D6CB3F018E28AA100DFCDA2 /* draw.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D6CB3BE18E28AA000DFCDA2 /* draw.c */; };
 		2D6CB3F118E28AA100DFCDA2 /* e_bomb.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D6CB3BF18E28AA000DFCDA2 /* e_bomb.c */; };
@@ -39,7 +38,6 @@
 		2D6CB3FF18E28AA100DFCDA2 /* scr_imain.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D6CB3D018E28AA000DFCDA2 /* scr_imain.c */; };
 		2D6CB40018E28AA100DFCDA2 /* scr_imap.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D6CB3D118E28AA000DFCDA2 /* scr_imap.c */; };
 		2D6CB40118E28AA100DFCDA2 /* scr_pause.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D6CB3D218E28AA000DFCDA2 /* scr_pause.c */; };
-		2D6CB40218E28AA100DFCDA2 /* scr_xrick.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D6CB3D318E28AA000DFCDA2 /* scr_xrick.c */; };
 		2D6CB40318E28AA100DFCDA2 /* scroller.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D6CB3D418E28AA000DFCDA2 /* scroller.c */; };
 		2D6CB40418E28AA100DFCDA2 /* sysarg.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D6CB3D618E28AA000DFCDA2 /* sysarg.c */; };
 		2D6CB40518E28AA100DFCDA2 /* sysevt.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D6CB3D718E28AA100DFCDA2 /* sysevt.c */; };
@@ -48,10 +46,8 @@
 		2D6CB40818E28AA100DFCDA2 /* syssnd.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D6CB3DA18E28AA100DFCDA2 /* syssnd.c */; };
 		2D6CB40918E28AA100DFCDA2 /* system.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D6CB3DB18E28AA100DFCDA2 /* system.c */; };
 		2D6CB40A18E28AA100DFCDA2 /* sysvid.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D6CB3DC18E28AA100DFCDA2 /* sysvid.c */; };
-		2D6CB40B18E28AA100DFCDA2 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D6CB3DD18E28AA100DFCDA2 /* unzip.c */; };
 		2D6CB40C18E28AA100DFCDA2 /* util.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D6CB3DE18E28AA100DFCDA2 /* util.c */; };
 		2D6CB40D18E28AA100DFCDA2 /* xrick.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D6CB3DF18E28AA100DFCDA2 /* xrick.c */; };
-		2D6CB40F18E28B1200DFCDA2 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6CB40E18E28B1200DFCDA2 /* libz.dylib */; };
 		2D6CB41418E28BF700DFCDA2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6CB41318E28BF700DFCDA2 /* Cocoa.framework */; };
 		2D6CB41718E28F4C00DFCDA2 /* SDLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6CB41618E28F4C00DFCDA2 /* SDLAppDelegate.m */; };
 		2D6CB41A18E2902E00DFCDA2 /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6CB41918E2902E00DFCDA2 /* SDLMain.m */; };
@@ -73,7 +69,6 @@
 		2D6CB38518E28A7800DFCDA2 /* xrick */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = xrick; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D6CB39218E28A8C00DFCDA2 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		2D6CB39318E28A8C00DFCDA2 /* control.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = control.h; sourceTree = "<group>"; };
-		2D6CB39418E28A8C00DFCDA2 /* data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = data.h; sourceTree = "<group>"; };
 		2D6CB39518E28A8C00DFCDA2 /* debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = debug.h; sourceTree = "<group>"; };
 		2D6CB39618E28A8C00DFCDA2 /* devtools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = devtools.h; sourceTree = "<group>"; };
 		2D6CB39718E28A8C00DFCDA2 /* draw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = draw.h; sourceTree = "<group>"; };
@@ -111,7 +106,6 @@
 		2D6CB3B918E28AA000DFCDA2 /* dat_spritesST.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dat_spritesST.c; sourceTree = "<group>"; };
 		2D6CB3BA18E28AA000DFCDA2 /* dat_tilesPC.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dat_tilesPC.c; sourceTree = "<group>"; };
 		2D6CB3BB18E28AA000DFCDA2 /* dat_tilesST.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dat_tilesST.c; sourceTree = "<group>"; };
-		2D6CB3BC18E28AA000DFCDA2 /* data.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = data.c; sourceTree = "<group>"; };
 		2D6CB3BD18E28AA000DFCDA2 /* devtools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = devtools.c; sourceTree = "<group>"; };
 		2D6CB3BE18E28AA000DFCDA2 /* draw.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = draw.c; sourceTree = "<group>"; };
 		2D6CB3BF18E28AA000DFCDA2 /* e_bomb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = e_bomb.c; sourceTree = "<group>"; };
@@ -134,7 +128,6 @@
 		2D6CB3D018E28AA000DFCDA2 /* scr_imain.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = scr_imain.c; sourceTree = "<group>"; };
 		2D6CB3D118E28AA000DFCDA2 /* scr_imap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = scr_imap.c; sourceTree = "<group>"; };
 		2D6CB3D218E28AA000DFCDA2 /* scr_pause.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = scr_pause.c; sourceTree = "<group>"; };
-		2D6CB3D318E28AA000DFCDA2 /* scr_xrick.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = scr_xrick.c; sourceTree = "<group>"; };
 		2D6CB3D418E28AA000DFCDA2 /* scroller.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = scroller.c; sourceTree = "<group>"; };
 		2D6CB3D518E28AA000DFCDA2 /* sdlcodes.e */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sdlcodes.e; sourceTree = "<group>"; };
 		2D6CB3D618E28AA000DFCDA2 /* sysarg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sysarg.c; sourceTree = "<group>"; };
@@ -144,13 +137,11 @@
 		2D6CB3DA18E28AA100DFCDA2 /* syssnd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = syssnd.c; sourceTree = "<group>"; };
 		2D6CB3DB18E28AA100DFCDA2 /* system.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = system.c; sourceTree = "<group>"; };
 		2D6CB3DC18E28AA100DFCDA2 /* sysvid.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sysvid.c; sourceTree = "<group>"; };
-		2D6CB3DD18E28AA100DFCDA2 /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
 		2D6CB3DE18E28AA100DFCDA2 /* util.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = util.c; sourceTree = "<group>"; };
 		2D6CB3DF18E28AA100DFCDA2 /* xrick.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = xrick.c; sourceTree = "<group>"; };
 		2D6CB3E018E28AA100DFCDA2 /* xrick.rc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = xrick.rc; sourceTree = "<group>"; };
 		2D6CB3E118E28AA100DFCDA2 /* xrickPC.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = xrickPC.ico; sourceTree = "<group>"; };
 		2D6CB3E218E28AA100DFCDA2 /* xrickST.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = xrickST.ico; sourceTree = "<group>"; };
-		2D6CB40E18E28B1200DFCDA2 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		2D6CB41318E28BF700DFCDA2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		2D6CB41518E28F4C00DFCDA2 /* SDLAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDLAppDelegate.h; sourceTree = "<group>"; };
 		2D6CB41618E28F4C00DFCDA2 /* SDLAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDLAppDelegate.m; sourceTree = "<group>"; };
@@ -164,7 +155,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D6CB41418E28BF700DFCDA2 /* Cocoa.framework in Frameworks */,
-				2D6CB40F18E28B1200DFCDA2 /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,7 +169,6 @@
 				2D6CB41518E28F4C00DFCDA2 /* SDLAppDelegate.h */,
 				2D6CB41618E28F4C00DFCDA2 /* SDLAppDelegate.m */,
 				2D6CB41318E28BF700DFCDA2 /* Cocoa.framework */,
-				2D6CB40E18E28B1200DFCDA2 /* libz.dylib */,
 				2D6CB3B018E28AA000DFCDA2 /* src */,
 				2D6CB39118E28A8C00DFCDA2 /* include */,
 				2D6CB38618E28A7800DFCDA2 /* Products */,
@@ -199,7 +188,6 @@
 			children = (
 				2D6CB39218E28A8C00DFCDA2 /* config.h */,
 				2D6CB39318E28A8C00DFCDA2 /* control.h */,
-				2D6CB39418E28A8C00DFCDA2 /* data.h */,
 				2D6CB39518E28A8C00DFCDA2 /* debug.h */,
 				2D6CB39618E28A8C00DFCDA2 /* devtools.h */,
 				2D6CB39718E28A8C00DFCDA2 /* draw.h */,
@@ -245,7 +233,6 @@
 				2D6CB3B918E28AA000DFCDA2 /* dat_spritesST.c */,
 				2D6CB3BA18E28AA000DFCDA2 /* dat_tilesPC.c */,
 				2D6CB3BB18E28AA000DFCDA2 /* dat_tilesST.c */,
-				2D6CB3BC18E28AA000DFCDA2 /* data.c */,
 				2D6CB3BD18E28AA000DFCDA2 /* devtools.c */,
 				2D6CB3BE18E28AA000DFCDA2 /* draw.c */,
 				2D6CB3BF18E28AA000DFCDA2 /* e_bomb.c */,
@@ -268,7 +255,6 @@
 				2D6CB3D018E28AA000DFCDA2 /* scr_imain.c */,
 				2D6CB3D118E28AA000DFCDA2 /* scr_imap.c */,
 				2D6CB3D218E28AA000DFCDA2 /* scr_pause.c */,
-				2D6CB3D318E28AA000DFCDA2 /* scr_xrick.c */,
 				2D6CB3D418E28AA000DFCDA2 /* scroller.c */,
 				2D6CB3D518E28AA000DFCDA2 /* sdlcodes.e */,
 				2D6CB3D618E28AA000DFCDA2 /* sysarg.c */,
@@ -278,7 +264,6 @@
 				2D6CB3DA18E28AA100DFCDA2 /* syssnd.c */,
 				2D6CB3DB18E28AA100DFCDA2 /* system.c */,
 				2D6CB3DC18E28AA100DFCDA2 /* sysvid.c */,
-				2D6CB3DD18E28AA100DFCDA2 /* unzip.c */,
 				2D6CB3DE18E28AA100DFCDA2 /* util.c */,
 				2D6CB3DF18E28AA100DFCDA2 /* xrick.c */,
 				2D6CB3E018E28AA100DFCDA2 /* xrick.rc */,
@@ -323,6 +308,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 2D6CB37C18E28A7800DFCDA2;
@@ -345,8 +331,6 @@
 				2D6CB3FB18E28AA100DFCDA2 /* maps.c in Sources */,
 				2D6CB3F218E28AA100DFCDA2 /* e_bonus.c in Sources */,
 				2D6CB40C18E28AA100DFCDA2 /* util.c in Sources */,
-				2D6CB40218E28AA100DFCDA2 /* scr_xrick.c in Sources */,
-				2D6CB3EE18E28AA100DFCDA2 /* data.c in Sources */,
 				2D6CB3E518E28AA100DFCDA2 /* dat_maps.c in Sources */,
 				2D6CB40518E28AA100DFCDA2 /* sysevt.c in Sources */,
 				2D6CB40618E28AA100DFCDA2 /* sysjoy.c in Sources */,
@@ -379,7 +363,6 @@
 				2D6CB41A18E2902E00DFCDA2 /* SDLMain.m in Sources */,
 				2D6CB3F818E28AA100DFCDA2 /* ents.c in Sources */,
 				2D6CB3E818E28AA100DFCDA2 /* dat_screens.c in Sources */,
-				2D6CB40B18E28AA100DFCDA2 /* unzip.c in Sources */,
 				2D6CB3E318E28AA100DFCDA2 /* control.c in Sources */,
 				2D6CB3F118E28AA100DFCDA2 /* e_bomb.c in Sources */,
 				2D6CB3E918E28AA100DFCDA2 /* dat_snd.c in Sources */,
@@ -469,7 +452,18 @@
 					/usr/local/include/SDL,
 				);
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
-				OTHER_LDFLAGS = "-lsdl";
+				OTHER_CFLAGS = (
+					"-I/opt/homebrew/include/SDL",
+					"-D_GNU_SOURCE=1",
+					"-D_THREAD_SAFE",
+				);
+				OTHER_LDFLAGS = (
+					"-lsdl",
+					"-L/opt/homebrew/lib",
+					"-lSDLmain",
+					"-lSDL",
+					"-Wl,-framework,Cocoa",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -483,7 +477,18 @@
 					/usr/local/include/SDL,
 				);
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
-				OTHER_LDFLAGS = "-lsdl";
+				OTHER_CFLAGS = (
+					"-I/opt/homebrew/include/SDL",
+					"-D_GNU_SOURCE=1",
+					"-D_THREAD_SAFE",
+				);
+				OTHER_LDFLAGS = (
+					"-lsdl",
+					"-L/opt/homebrew/lib",
+					"-lSDLmain",
+					"-lSDL",
+					"-Wl,-framework,Cocoa",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

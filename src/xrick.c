@@ -23,13 +23,24 @@ int
 main(int argc, char *argv[])
 {
 	sys_init(argc, argv);
-	if (sysarg_args_data)
-		data_setpath(sysarg_args_data);
-	else
-		data_setpath("data.zip");
-	game_run();
-	data_closepath();
-	sys_shutdown();
+
+    game_init();
+    while (game_update()!=0)
+    {
+        game_draw();
+    }
+    game_shutdown();
+
+#if 0
+    game_run();
+    while (true)
+        {
+            game_update();
+            game_draw();
+        }
+#endif
+
+    sys_shutdown();
 	return 0;
 }
 
