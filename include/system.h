@@ -76,10 +76,13 @@ extern void sys_sleep(int);
 /*
  * video section
  */
-#define SYSVID_DOWNSAMPLE 2
+
 
 #define SYSVID_ZOOM 1
 #define SYSVID_MAXZOOM 1
+
+#define SYSVID_DOWNRES 2
+
 #define SYSVID_WIDTH 320
 #define SYSVID_HEIGHT 200
 

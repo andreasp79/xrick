@@ -257,6 +257,7 @@ sysvid_shutdown(void)
   SDL_Quit();
 }
 
+//#define DOWNRES
 /*
  * Update screen
  * NOTE errors processing ?
@@ -273,52 +274,67 @@ sysvid_update(rect_t *rects)
 
   if (SDL_LockSurface(screen) == -1)
     sys_panic("xrick/panic: SDL_LockSurface failed\n");
-
-    zoom = 1;
     
-  while (rects) {
-    p0 = sysvid_fb;
-    p0 += rects->x + rects->y * SYSVID_WIDTH;
-    q0 = (U8 *)screen->pixels;
-    q0 += (rects->x + rects->y * SYSVID_WIDTH * zoom) * zoom;
+  while (rects)
+  {
+     
+      int downsample = 1;
 
-    for (y = rects->y; y < rects->y + rects->height; y++) {
-      for (yz = 0; yz < zoom; yz++) {
-	p = p0;
-	q = q0;
-	for (x = rects->x; x < rects->x + rects->width; x++) {
-	  for (xz = 0; xz < zoom; xz++) {
-	    *q = *p;
-	    q++;
-	  }
-	  p++;
-	}
-	q0 += SYSVID_WIDTH * zoom;
-      }
-      p0 += SYSVID_WIDTH;
+#ifdef DOWNRES
+      downsample = 2;
+#endif
+      
+      
+    p0 = sysvid_fb;
+    p0 += (rects->x) + (rects->y) * SYSVID_WIDTH;
+    q0 = (U8 *)screen->pixels;
+    q0 += (rects->x/downsample) + (rects->y/downsample) * SYSVID_WIDTH;
+
+      int advance_q_row = 0;
+      int advance_q_col = 0;
+      
+    for (y = (rects->y); y < (rects->y) + (rects->height); y++)
+    {
+        p = p0;
+        q = q0;
+        
+        for (x = (rects->x); x < (rects->x) + (rects->width); x++)
+        {
+            //*q = 0xFF;//*p;
+            *q = *p;
+            
+#ifdef DOWNRES
+            advance_q_col = !advance_q_col;
+            if (advance_q_col)
+#endif
+                q++;
+        
+            p++;
+        }
+#ifdef DOWNRES
+        advance_q_row = !advance_q_row;
+        if (advance_q_row)
+#endif
+            q0 += SYSVID_WIDTH;
+        
+        p0 += SYSVID_WIDTH;
     }
 
-    /*IFDEBUG_VIDEO2(
-    for (y = rects->y; y < rects->y + rects->height; y++)
-      for (yz = 0; yz < zoom; yz++) {
-	p = (U8 *)screen->pixels + rects->x * zoom + (y * zoom + yz) * SYSVID_WIDTH * zoom;
-	*p = 0x01;
-	*(p + rects->width * zoom - 1) = 0x01;
-      }
-
-    for (x = rects->x; x < rects->x + rects->width; x++)
-      for (xz = 0; xz < zoom; xz++) {
-	p = (U8 *)screen->pixels + x * zoom + xz + rects->y * zoom * SYSVID_WIDTH * zoom;
-	*p = 0x01;
-	*(p + ((rects->height * zoom - 1) * zoom) * SYSVID_WIDTH) = 0x01;
-      }
-    );*/
-
-    area.x = rects->x * zoom;
-    area.y = rects->y * zoom;
-    area.h = rects->height * zoom;
-    area.w = rects->width * zoom;
-    SDL_UpdateRects(screen, 1, &area);
+#ifdef DOWNRES
+      area.x = 0 ;
+      area.y = 0 ;
+      area.w = SYSVID_WIDTH ;
+      area.h = SYSVID_HEIGHT ;
+      
+#else
+    area.x = rects->x ;
+    area.y = rects->y ;
+    area.h = rects->height ;
+    area.w = rects->width ;
+#endif
+      
+      
+      SDL_UpdateRects(screen, 1, &area);
 
     rects = rects->next;
   }
