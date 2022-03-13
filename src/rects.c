@@ -40,10 +40,19 @@ rects_new(U16 x, U16 y, U16 width, U16 height, rect_t *next)
   rect_t *r;
 
   r = malloc(sizeof *r);
+    
+#ifdef HALFRES
+    r->x = x/2;
+    r->y = y/2;
+    r->width = width/2;
+    r->height = height/2;
+#else
   r->x = x;
   r->y = y;
   r->width = width;
   r->height = height;
+#endif
+    
   r->next = next;
   return r;
 }
