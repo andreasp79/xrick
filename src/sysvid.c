@@ -277,21 +277,11 @@ sysvid_update(rect_t *rects)
     
   while (rects)
   {
-     
-      int downsample = 1;
-
-#ifdef DOWNRES
-      downsample = 2;
-#endif
-      
       
     p0 = sysvid_fb;
     p0 += (rects->x) + (rects->y) * SYSVID_WIDTH;
     q0 = (U8 *)screen->pixels;
-    q0 += (rects->x/downsample) + (rects->y/downsample) * SYSVID_WIDTH;
-
-      int advance_q_row = 0;
-      int advance_q_col = 0;
+    q0 += (rects->x) + (rects->y) * SYSVID_WIDTH;
       
     for (y = (rects->y); y < (rects->y) + (rects->height); y++)
     {
@@ -303,38 +293,25 @@ sysvid_update(rect_t *rects)
             //*q = 0xFF;//*p;
             *q = *p;
             
-#ifdef DOWNRES
-            advance_q_col = !advance_q_col;
-            if (advance_q_col)
-#endif
-                q++;
+
+            q++;
         
             p++;
         }
-#ifdef DOWNRES
-        advance_q_row = !advance_q_row;
-        if (advance_q_row)
-#endif
+
             q0 += SYSVID_WIDTH;
         
         p0 += SYSVID_WIDTH;
     }
 
-#ifdef DOWNRES
-      area.x = 0 ;
-      area.y = 0 ;
-      area.w = SYSVID_WIDTH ;
-      area.h = SYSVID_HEIGHT ;
-      
-#else
+
     area.x = rects->x ;
     area.y = rects->y ;
     area.h = rects->height ;
     area.w = rects->width ;
-#endif
       
       
-      SDL_UpdateRects(screen, 1, &area);
+    SDL_UpdateRects(screen, 1, &area);
 
     rects = rects->next;
   }
