@@ -25,6 +25,14 @@
 /* map coordinates of the top of the hidden bottom of the map */
 #define DRAW_XYMAP_HBTOP (0x0100)
 
+
+// Originally 0x20 (=32d). Changed to 30 as that's what fits in 240x240.
+#define MAX_TILE_X (30)
+
+// Skip drawing the leftmost tile. This is to balance out the 2 missing
+// tiles on both sides of the screen, instead of having both on the right side.
+#define MIN_TILE_X (1)
+
 extern U8 *draw_tllst;
 #ifdef GFXPC
 extern U16 draw_filter;

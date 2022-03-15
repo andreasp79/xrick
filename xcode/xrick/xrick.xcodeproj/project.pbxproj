@@ -457,6 +457,7 @@
 					"-D_GNU_SOURCE=1",
 					"-D_THREAD_SAFE",
 				);
+				"OTHER_CPLUSPLUSFLAGS[arch=*]" = "$(OTHER_CFLAGS)";
 				OTHER_LDFLAGS = (
 					"-lsdl",
 					"-L/opt/homebrew/lib",
