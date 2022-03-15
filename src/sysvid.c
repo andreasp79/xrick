@@ -24,7 +24,7 @@
 #include <memory.h> /* memset */
 #endif
 
-U8 *sysvid_fb; /* frame buffer */
+U16 *sysvid_fb; /* frame buffer */
 rect_t SCREENRECT = {0, 0, SYSVID_WIDTH, SYSVID_HEIGHT, NULL}; /* whole fb */
 
 static SDL_Color palette[256];
@@ -238,7 +238,7 @@ sysvid_init(void)
   /*
    * create v_ frame buffer
    */
-  sysvid_fb = malloc(SYSVID_WIDTH * SYSVID_HEIGHT);
+  sysvid_fb = malloc(SYSVID_WIDTH * SYSVID_HEIGHT * 2);
   if (!sysvid_fb)
     sys_panic("xrick/video: sysvid_fb malloc failed\n");
 
@@ -265,6 +265,34 @@ sysvid_shutdown(void)
 void
 sysvid_update(rect_t *rects)
 {
+    static SDL_Rect area;
+    
+    if (SDL_LockSurface(screen) == -1)
+      sys_panic("xrick/panic: SDL_LockSurface failed\n");
+    
+    U8* target = (U8 *)screen->pixels;
+    U16* source = sysvid_fb;
+    
+    //memcpy(target, sysvid_fb, SYSVID_WIDTH*SYSVID_HEIGHT);
+    for (int y = 0; y < SYSVID_HEIGHT; ++y)
+    {
+        for (int x = 0; x < SYSVID_WIDTH; ++x)
+        {
+            *target++ = *source++;
+        }
+    }
+    
+    area.x = 0 ;
+    area.y = 0;
+    area.h = SYSVID_HEIGHT ;
+    area.w = SYSVID_WIDTH ;
+      
+      
+    SDL_UpdateRects(screen, 1, &area);
+    
+    SDL_UnlockSurface(screen);
+    
+#if false
   static SDL_Rect area;
   U16 x, y, xz, yz;
   U8 *p, *q, *p0, *q0;
@@ -317,6 +345,7 @@ sysvid_update(rect_t *rects)
   }
 
   SDL_UnlockSurface(screen);
+#endif
 }
 
 
@@ -327,7 +356,7 @@ sysvid_update(rect_t *rects)
 void
 sysvid_clear(void)
 {
-  memset(sysvid_fb, 0, SYSVID_WIDTH * SYSVID_HEIGHT);
+  memset(sysvid_fb, 0, SYSVID_WIDTH * SYSVID_HEIGHT * 2);
 }
 
 

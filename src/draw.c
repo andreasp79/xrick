@@ -60,12 +60,12 @@
  * counters positions (pixels, screen)
  */
 #ifdef GFXPC
-#define DRAW_STATUS_SCORE_X 0x28
-#define DRAW_STATUS_LIVES_X 0xE8
-#define DRAW_STATUS_Y 0x08
+#define DRAW_STATUS_SCORE_X 5
+#define DRAW_STATUS_LIVES_X 190
+#define DRAW_STATUS_Y 210
 #endif
-#define DRAW_STATUS_BULLETS_X 0x68
-#define DRAW_STATUS_BOMBS_X 0xA8
+#define DRAW_STATUS_BULLETS_X 60
+#define DRAW_STATUS_BOMBS_X 120
 
 
 
@@ -88,7 +88,7 @@ rect_t draw_SCREENRECT = { 0, 0, SYSVID_WIDTH, SYSVID_HEIGHT, NULL };
 /*
  * private vars
  */
-static U8 *fb;     /* frame buffer pointer */
+static U16 *fb;     /* frame buffer pointer */
 
 
 /*
@@ -96,6 +96,9 @@ static U8 *fb;     /* frame buffer pointer */
  *
  * x, y: position (pixels, screen)
  */
+
+U16 fb_x;
+
 void
 draw_setfb(U16 x, U16 y)
 {
@@ -165,7 +168,7 @@ draw_clipms(S16 *x, S16 *y, U16 *width, U16 *height)
 void
 draw_tilesList(void)
 {
-  U8 *t;
+  U16 *t;
 
   t = fb;
   while (draw_tilesSubList() != 0xFE)
@@ -219,6 +222,29 @@ draw_tilesSubList()
 }
 
 
+void draw_black_tile()
+{
+    U8 i, k;
+    U16 *f;
+
+int numLines = 8;
+
+
+  f = fb;  /* frame buffer */
+  for (i = 0; i < numLines; i++)
+  {  /* for all 8 pixel lines */
+
+      for (k = 0; k<8; ++k)
+    {
+        f[k] = 0;
+
+    }
+    f += SYSVID_WIDTH;  /* next line */
+  }
+
+  fb += 8;  /* next tile */
+}
+
 /*
  * Draw a tile
  * at position indicated by fb ; leave fb pointing to the next tile
@@ -232,7 +258,8 @@ draw_tilesSubList()
 void
 draw_tile(U8 tileNumber)
 {
-  U8 i, k, *f;
+    U8 i, k;
+    U16 *f;
 
 #ifdef GFXPC
   U16 x;
@@ -288,7 +315,8 @@ draw_tile(U8 tileNumber)
 void
 draw_sprite(U8 nbr, U16 x, U16 y)
 {
-  U8 i, j, k, *f;
+  U8 i, j, k;
+    U16* f;
   U16 xm = 0, xp = 0;
 
   draw_setfb(x, y);
@@ -327,7 +355,7 @@ draw_sprite(U8 nbr, U16 x, U16 y)
        * per pixel to frame buffer 8 bits per pixels
        */
       for (k = 8; k--; xm >>= 2, xp >>= 2)
-	f[k] = (f[k] & (xm & 3)) | (xp & 3);
+	f[k] = (/*f[k] &*/ (xm & 3)) | (xp & 3);
       f += SYSVID_WIDTH;
     }
     fb += 8;
@@ -351,7 +379,9 @@ draw_sprite(U8 nbr, U16 x, U16 y)
 void
 draw_sprite2(U8 number, U16 x, U16 y, U8 front)
 {
-  U8 k, *f, c, r, dx;
+  U8 k, c, r, dx;
+    U16* f;
+    
   U16 cmax, rmax;
   U16 xm = 0, xp = 0;
   S16 xmap, ymap;
@@ -420,7 +450,7 @@ draw_sprite2(U8 number, U16 x, U16 y, U8 front)
          */
         for (k = 8; k--; xm >>= 2, xp >>= 2)
         {
-            f[k] = ((f[k] & (xm & 3)) | (xp & 3));
+            f[k] = (0 & (/*f[k] &*/ (xm & 3)) | (xp & 3));
           
     //#ifdef ENABLE_CHEATS
     //      if (game_cheat3) f[k] |= 4;
@@ -516,6 +546,7 @@ draw_map(void)
 void
 draw_drawStatus(void)
 {
+
   S8 i;
   U32 sv;
   static U8 s[7] = {0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0xfe};
@@ -531,6 +562,7 @@ draw_drawStatus(void)
   draw_setfb(DRAW_STATUS_SCORE_X, DRAW_STATUS_Y);
   draw_tilesList();
 
+    
   draw_setfb(DRAW_STATUS_BULLETS_X, DRAW_STATUS_Y);
   for (i = 0; i < game_bullets; i++)
     draw_tile(TILES_BULLET);
@@ -576,17 +608,15 @@ draw_clearStatus(void)
 {
   U8 i;
 
-#ifdef GFXPC
-  draw_tilesBank = map_tilesBank;
-#endif
+  //draw_tilesBank = map_tilesBank;
 
   draw_setfb(DRAW_STATUS_SCORE_X, DRAW_STATUS_Y);
   for (i = 0; i < DRAW_STATUS_LIVES_X/8 + 6 - DRAW_STATUS_SCORE_X/8; i++) {
-#ifdef GFXPC
-    draw_tile(map_map[MAP_ROW_SCRTOP + (DRAW_STATUS_Y / 8)][i]);
-#endif
 
+      draw_black_tile();
   }
+
+    
 }
 
 
